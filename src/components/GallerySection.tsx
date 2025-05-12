@@ -1,33 +1,33 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+// Убираем импорт framer-motion
+// import { motion } from 'framer-motion';
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const galleryImages = [
   {
-    url: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1887&auto=format&fit=crop',
-    category: 'Портрет'
+    url: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1887&auto=format&fit=crop",
+    category: "Портрет",
   },
   {
-    url: 'https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=1965&auto=format&fit=crop',
-    category: 'Креатив'
+    url: "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=1965&auto=format&fit=crop",
+    category: "Креатив",
   },
   {
-    url: 'https://images.unsplash.com/photo-1604268890394-c883e9003d34?q=80&w=1887&auto=format&fit=crop',
-    category: 'Студия'
+    url: "https://images.unsplash.com/photo-1604268890394-c883e9003d34?q=80&w=1887&auto=format&fit=crop",
+    category: "Студия",
   },
   {
-    url: 'https://images.unsplash.com/photo-1619855544858-e05e1ea2792f?q=80&w=1887&auto=format&fit=crop',
-    category: 'Эмоции'
+    url: "https://images.unsplash.com/photo-1619855544858-e05e1ea2792f?q=80&w=1887&auto=format&fit=crop",
+    category: "Эмоции",
   },
   {
-    url: 'https://images.unsplash.com/photo-1568707043650-eb03f2536825?q=80&w=1887&auto=format&fit=crop',
-    category: 'Пары'
+    url: "https://images.unsplash.com/photo-1568707043650-eb03f2536825?q=80&w=1887&auto=format&fit=crop",
+    category: "Пары",
   },
   {
-    url: 'https://images.unsplash.com/photo-1635107510039-e5b11c383d02?q=80&w=1965&auto=format&fit=crop',
-    category: 'Художественное'
+    url: "https://images.unsplash.com/photo-1635107510039-e5b11c383d02?q=80&w=1965&auto=format&fit=crop",
+    category: "Художественное",
   },
 ];
 
@@ -41,14 +41,13 @@ const GallerySection = () => {
               Галерея наших работ
             </h2>
             <p className="text-lg text-gray-700 max-w-xl">
-              Уникальные образы, запечатленные с учетом особенностей восприятия каждого клиента
+              Уникальные образы, запечатленные с учетом особенностей восприятия
+              каждого клиента
             </p>
           </div>
-          <Button 
-            variant="link" 
+          <Button
+            variant="link"
             className="text-purple-600 mt-4 md:mt-0 flex items-center gap-1 hover:gap-2 transition-all"
-            as="a"
-            href="/gallery"
           >
             <span>Смотреть все работы</span>
             <ArrowRight size={16} />
@@ -57,12 +56,11 @@ const GallerySection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
-            <motion.div
+            // Заменяем motion.div на обычный div с классами анимации
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="opacity-100 animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="group relative overflow-hidden rounded-lg shadow-md aspect-[4/5]">
                 <img
@@ -75,10 +73,12 @@ const GallerySection = () => {
                   <span className="text-sm font-medium bg-purple-600/80 py-1 px-2 rounded-full">
                     {image.category}
                   </span>
-                  <p className="mt-2 text-lg font-semibold">Нейрофотосессия "{image.category}"</p>
+                  <p className="mt-2 text-lg font-semibold">
+                    Нейрофотосессия "{image.category}"
+                  </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
